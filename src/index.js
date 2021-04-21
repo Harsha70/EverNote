@@ -4,6 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { firebase } from '@firebase/app'
+import "firebase/firestore"
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCxXJZz3VDznWX5nqYWMtTegmiL6cXoq6o",
+  authDomain: "evernote-d9251.firebaseapp.com",
+  projectId: "evernote-d9251",
+  storageBucket: "evernote-d9251.appspot.com",
+  messagingSenderId: "525634523482",
+  appId: "1:525634523482:web:ed1ccbc93081dbbe0ba363"
+};
+
+firebase.initializeApp(firebaseConfig)
+
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
