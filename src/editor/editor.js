@@ -8,13 +8,33 @@ import React, { Component } from 'react'
 
 
 class Editor extends Component {
+    constructor() {
+        super();
+        this.state = {
+          text: '',
+          title: '',
+          id: ''
+        };
+      }
+
+    updateBody = async (val) =>{
+        await this.setState({text:val})
+        this.update()
+    }
+
+    update = debounce(() => {
+        console.log("Updating")
+      }, 1500);
+      
     render() {
+        const {classes} = this.props
         return (
-            <div>
-                editor
+            <div className={classes.editorContainer}>
+                <ReactQuill value={this.state.text}
+                onChange={this.updateBody}></ReactQuill>
             </div>
         )
     }
 }
 
-export default Editor;
+export default withStyles(styles)(Editor);

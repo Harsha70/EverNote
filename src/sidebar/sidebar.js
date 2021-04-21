@@ -10,13 +10,15 @@ export class Sidebar extends Component {
     constructor() {
         super();
         this.state = {
-
+            addingNote:false,
+            title:null
         };
       }
 
     render() {
+        const {notes, classes, selectedNoteIndex} = this.props
         return (
-            <div>
+            <div className={classes.sidebarContainer}>
                 Sidebar
             </div>
         )
