@@ -1,6 +1,3 @@
-import ReactQuill from 'react-quill';
-import debounce from '../helpers';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { Divider, Button, List } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
@@ -33,7 +30,7 @@ class Sidebar extends Component {
         this.props.deleteNote(note)
     }
     render() {
-        const {notes, selectedNoteIndex, classes, deleteNote, selectNote, newNote} = this.props
+        const {notes, selectedNoteIndex, classes} = this.props
         if (notes) {
             return (
                 <div className={classes.sidebarContainer}>

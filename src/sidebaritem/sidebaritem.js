@@ -1,6 +1,4 @@
-import ReactQuill from 'react-quill';
-import debounce, { removeHTMLTags } from '../helpers';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
+import { removeHTMLTags } from '../helpers';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -17,7 +15,7 @@ class Sidebaritem extends Component {
         }
     }
     render() {
-        const {note, index, classes, selectedNoteIndex, selectNote, deleteNote} = this.props
+        const {note, index, classes, selectedNoteIndex} = this.props
         return (
             <div key={index}>
                 <ListItem
