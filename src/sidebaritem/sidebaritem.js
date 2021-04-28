@@ -1,23 +1,41 @@
 import ReactQuill from 'react-quill';
-import debounce from '../helpers';
+import debounce, { removeHTMLTags } from '../helpers';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import React, { Component } from 'react'
+import { ListItem, ListItemText } from '@material-ui/core';
 
-export class Sidebaritem extends Component {
-    constructor() {
-        super();
-        this.state = {
-
-        };
-      }
+class Sidebaritem extends Component {
       
+    selectNote=(n,i)=>this.props.selectNote(n,i)
+    deleteNote=(note)=>{
+        if (window.confirm(`Are you sure? : ${note}`)){
+            this.props.deleteNote(note)
+        }
+    }
     render() {
+        const {note, index, classes, selectedNoteIndex, selectNote, deleteNote} = this.props
         return (
-            <div >
-                Sidebaritem
+            <div key={index}>
+                <ListItem
+                className={classes.listItem}
+                selected={selectedNoteIndex === index}
+                alignItems="flex-start"
+                >
+                    <div className={classes.textSection} onClick={()=>this.selectNote(note, index)}>
+                        <ListItemText
+                        primary={note.title}
+                        secondary={removeHTMLTags(note.body.substring(0,30))+"..."}></ListItemText>
+                    </div>
+                    
+                    <DeleteIcon onClick={()=>this.deleteNote(note)}
+                    className={classes.deleteIcon}>
+
+                    </DeleteIcon>
+                </ListItem>
             </div>
         )
     }
